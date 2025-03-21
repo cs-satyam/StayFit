@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Page</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        .profile {
+            position: relative; /* Added */
+            background: #5a3db8;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .profile:hover {
+            background: #4a2fa3;
+        }
+        
+        .dropdown {
+            display: none;
+            position: absolute;
+            left: 0;  /* Align to the left of the profile */
+            top: 100%; /* Position directly below the profile */
+            background: white;
+            color: black;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            width: 180px;
+            transition: all 0.3s ease-in-out;
+        }
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: black;
+            font-size: 14px;
+            transition: background 0.3s ease;
+        }
+        
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Dashboard</a>
+                <a href="profileDiet.html">Diet</a>
+                <a href="profileCommunity.html">Community</a>
+
+                <div class="profile" onclick="toggleDropdown()">
+                
+                    👤 Profile
+                    <div id="dropdown" class="dropdown">
+                        <a href="#">Add Account</a>
+                        <a href="#">Logout</a>
+                    </div>
+            </div>
+            <!-- <div class="profile">👤 Profile</div> -->
+        </div>
+    </nav>
+    
+    <script>
+        function toggleDropdown() {
+            document.getElementById("dropdown").classList.toggle("show");
+        }
+        
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile')) {
+                var dropdowns = document.getElementsByClassName("dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

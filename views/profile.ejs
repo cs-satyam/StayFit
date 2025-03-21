@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayFit Dashboard</title>
+    <link rel="stylesheet" href="css/profile.css">
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h2>StayFit</h2>
+            <ul>
+                <li><a href="#" onclick="showContent('dashboard')">🏠 Dashboard</a></li>
+                <li><a href="#" onclick="showContent('live-tracking')">📍 Live Tracking</a></li>
+                <li><a href="#" onclick="showContent('diet-plan')">🥗 Diet Plan</a></li>
+                <li><a href="#" onclick="showContent('exercise')">🏋️ Exercise</a></li>
+                <li><a href="#" onclick="showContent('todo-list')">✅ To-Do List</a></li>
+                <li><a href="#" onclick="showContent('chatbot')">💬 Chatbot</a></li>
+                <li><a href="#" onclick="showContent('analytics')">📊 Analytics</a></li>
+                <li><a href="#" onclick="showContent('settings')">⚙️ Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content" id="main-content">
+            <header>
+                <h1>Good Morning, User!</h1>
+                <p>Stay active and healthy</p>
+            </header>
+            <section id="content-display">
+                <div class="dashboard-cards">
+                    <div class="card" onclick="showContent('live-tracking')">📍 Live Tracking</div>
+                    <div class="card" onclick="showContent('diet-plan')">🥗 Diet Plan</div>
+                    <div class="card" onclick="showContent('exercise')">🏋️ Exercise</div>
+                    <div class="card" onclick="showContent('todo-list')">✅ To-Do List</div>
+                    <div class="card" onclick="showContent('chatbot')">💬 Chatbot</div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function showContent(section) {
+            let content = {
+                'dashboard': '<h2>Dashboard Overview</h2><p>Track your progress and stay fit!</p>',
+                'live-tracking': `<h2>Live Tracking</h2>
+                    <p>Monitor your real-time activity.</p>
+                    <p><strong>Calories Burned:</strong> <span id="calories">0</span> kcal</p>
+                    <p><strong>Weight:</strong> <span id="weight">70</span> kg</p>
+                    <p><strong>Heart Rate:</strong> <span id="heart-rate">72</span> bpm</p>
+                    <p><strong>Steps Taken:</strong> <span id="steps">0</span> steps</p>
+                    <p><strong>Water Intake:</strong> <span id="water">0</span> ml</p>
+                    <button class="track-btn" onclick="simulateLiveTracking()">Start Tracking</button>`,
+                'diet-plan': `<h2>Diet Plan</h2><p>Daily meal suggestions based on your fitness goals.</p>`,
+                'exercise': `<h2>Exercise Plan</h2><p>Workouts and progress tracking for a healthier you.</p>`,
+                'todo-list': `<h2>To-Do List</h2><p>Manage your daily fitness and health tasks.</p>`,
+                'chatbot': `<h2>Chatbot</h2><p>Ask your virtual coach anything about fitness and health!</p>`,
+                'analytics': `<h2>Analytics</h2><p>View your fitness progress and statistics.</p>`,
+                'settings': `<h2>Settings</h2><p>Customize your StayFit experience.</p>`
+            };
+            document.getElementById('content-display').innerHTML = content[section] || '<h2>Section not found</h2>';
+        }
+
+        function simulateLiveTracking() {
+            let calories = 0, steps = 0, water = 0, weight = 70;
+            setInterval(() => {
+                if (document.getElementById('calories')) {
+                    document.getElementById('calories').innerText = calories += Math.floor(Math.random() * 10);
+                    document.getElementById('steps').innerText = steps += Math.floor(Math.random() * 50);
+                    document.getElementById('water').innerText = water += Math.floor(Math.random() * 100);
+                    document.getElementById('heart-rate').innerText = 60 + Math.floor(Math.random() * 30);
+                    document.getElementById('weight').innerText = (weight - Math.random() * 0.1).toFixed(1);
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

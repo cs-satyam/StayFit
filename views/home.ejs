@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>StayFit - Your Fitness Tracker</title>
+        <link rel="stylesheet" href="css/home.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    </head>
+    <body>
+        <div class="blur-bg"></div>
+        
+        <!-- Navigation Bar -->
+        <header id="navbar">
+            <div class="logo-container">
+                <img src="/images/logo-removebg-preview.png" alt="StayFit Logo">
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#home">Home</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#tips">Fitness Tips</a></li>
+                            <li><a href="#plans">Workout Plans</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#features">Features</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#tracking">Calorie Tracking</a></li>
+                            <li><a href="#analytics">Workout Analytics</a></li>
+                            <li><a href="#progress">Progress Monitoring</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#stats">Stats</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#calories">Calories Burned</a></li>
+                            <li><a href="#steps">Steps Walked</a></li>
+                            <li><a href="#workouts">Workouts Completed</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#testimonials">Testimonials</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#users">User Reviews</a></li>
+                            <li><a href="#experts">Expert Opinions</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#contact">Contact</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#email">Email Us</a></li>
+                            <li><a href="#support">Customer Support</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/login" class="btn-login">Login</a></li>
+                </ul>
+            </nav>
+            
+        </header>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1  >Track Your Fitness Journey with StayFit</h1><br>
+            <span id="element"></span>
+            <br>
+            <a href="/login" id="start">Get Started</a>
+    </section>
+    
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="feature-box">
+            <h3>Calorie Tracking</h3>
+            <p>Log your meals and monitor your daily calorie intake with ease.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Workout Analytics</h3>
+            <p>Track your workouts, analyze performance, and optimize routines.</p>
+        </div>
+        <div class="feature-box">
+            <h3>Progress Monitoring</h3>
+            <p>Set fitness goals and visualize your improvements over time.</p>
+        </div>
+    </section>
+
+<!-- Fitness Tips Section -->
+<section id="tips" class="fitness-tips">
+    <h2>Fitness Tips</h2>
+    <div class="tips-container">
+        <div class="tip-box">
+            <h3>Stay Hydrated</h3>
+            <p>Drinking enough water is crucial for maintaining energy and aiding muscle recovery.</p>
+        </div>
+        <div class="tip-box">
+            <h3>Warm-Up & Cool Down</h3>
+            <p>Always start with a warm-up and finish with a cool-down to prevent injuries.</p>
+        </div>
+        <div class="tip-box">
+            <h3>Consistency is Key</h3>
+            <p>Stick to a workout routine to see long-term results and improve endurance.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Workout Plans Section -->
+<section id="plans" class="workout-plans">
+    <h2>Workout Plans</h2>
+    <div class="plans-container">
+        <div class="plan-box">
+            <h3>Beginner</h3>
+            <p>Includes basic exercises like squats, push-ups, and light cardio for starters.</p>
+        </div>
+        <div class="plan-box">
+            <h3>Intermediate</h3>
+            <p>A balanced mix of strength training and endurance exercises to build stamina.</p>
+        </div>
+        <div class="plan-box">
+            <h3>Advanced</h3>
+            <p>High-intensity workouts including weight training and complex cardio routines.</p>
+        </div>
+    </div>
+</section>
+
+    <!-- Fitness Statistics -->
+    <section id="stats" class="stats">
+        <div class="stat-box">
+            <img class="stat-img" src="calories.png" alt="Calories Burned">
+            <h2 id="calories">0</h2>
+            <p>Calories Burned Today</p>
+        </div>
+        <div class="stat-box">
+            <img class="stat-img" src="/images/steps.png" alt="Steps Walked">
+            <h2 id="steps">0</h2>
+            <p>Steps Walked</p>
+        </div>
+        <div class="stat-box">
+            <img class="stat-img" src="/images/sleep.png" alt="Sleep Recorded">
+            <h2 id="sleep">0 hrs</h2>
+            <p>Sleep Recorded</p>
+        </div>
+        <div class="stat-box">
+            <img class="stat-img" src="/images/workouts.png" alt="Workouts Completed">
+            <h2 id="workouts">0</h2>
+            <p>Workouts Completed</p>
+        </div>
+    </section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="testimonials">
+    <h2>What Our Users Say</h2>
+    <div class="testimonial-container">
+        <div class="testimonial">
+            <img src="/images/user1.png" alt="User 1">
+            <p>"StayFit has completely changed the way I track my fitness. The calorie tracker is amazing!"</p>
+            <h4>- Sarah Johnson</h4>
+        </div>
+        <div class="testimonial">
+            <img src="/images/user2.png" alt="User 2">
+            <p>"I love how easy it is to monitor my workouts. Highly recommend this app!"</p>
+            <h4>- Michael Lee</h4>
+        </div>
+        <div class="testimonial">
+            <img src="images/user3.png" alt="User 3">
+            <p>"The BMI calculator and progress tracking keep me motivated. Great app!"</p>
+            <h4>- Emily Davis</h4>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Have any questions? Feel free to reach out to us!</p>
+    <form action="/send-email" method="POST" id="email">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+        
+    </form>
+</section>
+
+
+    <footer id="contact">
+        <p>StayFit &copy; 2025 | Your Partner in Fitness</p>
+    </footer>
+    <script src="js/email.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/email.js"></script>
+
+</body>
+</html>

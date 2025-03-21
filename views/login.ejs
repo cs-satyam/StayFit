@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Modern Login Page</title>
+</head>
+<body>
+    <div class="container" id="container">
+        <!-- Signup Form -->
+        <div class="form-container sign-up">
+            <form action="/auth/register" method="POST">
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="/auth/google" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+
+                <!-- Add all required user model fields -->
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="number" name="age" placeholder="Age" required>
+
+                <select name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+
+                <input type="number" name="height" placeholder="Height (cm)" required>
+                <input type="number" name="weight" placeholder="Weight (kg)" required>
+
+                <select name="goal" required>
+                    <option value="" disabled selected>Select Goal</option>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Fitness">Fitness</option>
+                </select>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Login Form -->
+        <div class="form-container sign-in">
+            <form action="/auth/login" method="POST">
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="/auth/google" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email and password</span>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <a href="/forgot-password">Forgot Your Password?</a>
+
+                <% if (message) { %>
+                    <div style="color: green;"><%= message %></div>
+                <% } %>
+
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your details to sign in</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>New Here?</h1>
+                    <p>Register to start your fitness journey</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Switch between login and signup
+        const container = document.getElementById('container');
+        document.getElementById('register').addEventListener('click', () => {
+            container.classList.add('active');
+        });
+        document.getElementById('login').addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+    </script>
+
+    <script src="/js/login.js"></script>
+</body>
+</html>

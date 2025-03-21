@@ -1,0 +1,934 @@
+/* 🔹 Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 🔹 Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.logo-container {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.logo-container::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffff);
+    background-size: 300% 300%;
+    animation: glowAnimation 2s infinite linear;
+    z-index: -1;
+    filter: blur(10px);
+    transition: transform 0.5s ease-in-out;
+}
+
+@keyframes glowAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.logo-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+    z-index: 1;
+}
+
+.logo-container:hover {
+    transform: scale(2.0); /* Enlarges the entire logo */
+}
+
+.logo-container:hover::before {
+    transform: scale(3.3); /* Makes the glow effect bigger */
+}
+
+
+
+/* 🔹 Sticky Navbar with Scroll Effect */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: #222;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.4s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+header.scrolled {
+    padding: 10px 40px;
+    background: rgba(34, 34, 34, 0.9);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+  /* 🔹 Nav Links */
+  .nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-right: 80px;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 15px;
+    display: block;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-links a:hover {
+    color: #ebac25;
+}
+
+/* 🔹 Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #333;
+    border-radius: 8px;
+    padding: 10px;
+    list-style: none;
+    flex-direction: column;
+    width: 200px;
+    top: 40px;
+    left: 0;
+    z-index: 100;
+}
+
+.dropdown-menu a {
+    padding: 10px;
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background: #444;
+}
+
+/* 🔹 Show Dropdown on Hover */
+.dropdown:hover .dropdown-menu {
+    display: flex;
+}
+
+/* 🔹 Login Button */
+.btn-login {
+    
+    background: #ff7300;
+    color: white;
+    font-weight: 500;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s, transform 0.3s ease-in-out;
+    font-size: 16px;
+}
+
+.btn-login:hover {
+    background: #217dbb; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* 🔹 Mobile Responsive Navigation */
+.hamburger {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        background: #333;
+        width: 50vw;
+        padding: 20px;
+        border-radius: 10px;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+
+/* 🔹 Fullscreen Hero Section */
+
+.hero {
+    height: 100vh; /* Fullscreen */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(to bottom, #F8FAFC, #FF9800);
+    color: white;
+    padding: 100px 20px 20px; /* Push content down */
+    position: relative;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    max-width: 800px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+    transition: color 0.5s ease-in-out;
+}
+
+.hero h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(45deg, #ff0000, #ff7300, #ffeb00, #00ff00, #00ffff, #0000ff, #ff00ff);
+    background-size: 400%;
+    transition: transform 0.5s ease-in-out;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.hero h1:hover {
+    color: #ff7300;
+}
+
+.hero h1:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.hero #start {
+    background: linear-gradient(45deg, #e74c3c, #ff5733);
+    color: white;
+    font-weight: 500;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s, transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+.hero #start:hover {
+    background: linear-gradient(45deg, #0f1bc4, #3498db);
+    transform: scale(1.1);
+    box-shadow: 0px 8px 20px rgba(15, 27, 196, 0.4);
+}
+
+/* Add a glowing border effect */
+.hero #start::before {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg, #ff5733, #0f1bc4);
+    z-index: -1;
+    border-radius: 7px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.hero #start:hover::before {
+    opacity: 1;
+}
+
+/* Adding a subtle wiggle animation */
+@keyframes wiggle {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(1deg); }
+    50% { transform: rotate(-1deg); }
+    75% { transform: rotate(1deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.hero #start:hover {
+    animation: wiggle 0.3s ease-in-out;
+}
+
+
+/* 🔹 White Background for the Rest of the Page */
+.main-content {
+    background: white;
+    padding: 50px 20px;
+}
+
+/* 🔹 Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+}
+
+.feature-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 300px;
+}
+
+/* 🔹 Stats Section */
+/* .stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+    background: #0EA5E9;
+    color: white;
+}
+
+.stat-box {
+    text-align: center;
+}
+
+.stat-img {
+    height: 50px;
+} */
+
+
+.slider-container {
+    margin: 20px 0;
+}
+
+.chart-container {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+/* 🔹 Footer */
+footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 768px) {
+    /* Navbar */
+    header {
+        padding: 15px 20px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: -100%;
+        background: #34495e;
+        width: 50vw;
+        padding: 20px;
+        border-radius: 10px;
+        transition: right 0.3s;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    /* Features & Stats */
+    .features, .stats {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* Testimonials Section */
+.testimonials {
+    text-align: center;
+    padding: 50px;
+    background: #f8f9fa;
+}
+
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.testimonial {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* 🌟 Contact Section */
+.contact {
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    padding: 80px 20px; /* More balanced padding */
+    text-align: center;
+}
+
+/* Section Title */
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* Contact Description */
+.contact p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #ddd;
+}
+
+/* Contact Form */
+#email {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 35px; /* More padding inside form */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Group (for floating labels) */
+.input-group {
+    position: relative;
+    width: 100%;
+}
+
+/* Input Fields */
+#email input,
+#email textarea {
+    width: 100%;
+    padding: 15px; /* Increased padding for better spacing */
+    font-size: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px; /* Slightly rounded */
+    background: transparent;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Floating Labels */
+.input-group label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* Move label when user types */
+#email input:focus ~ label,
+#email textarea:focus ~ label,
+#email input:not(:placeholder-shown) ~ label,
+#email textarea:not(:placeholder-shown) ~ label {
+    top: 10px; /* Moves label up */
+    font-size: 0.85rem;
+    color: #FFD700;
+}
+
+/* Input Glow Effect on Focus */
+#email input:focus,
+#email textarea:focus {
+    border-color: #FFD700;
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Send Button */
+.btn {
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #FFD700, #ff6b6b);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button Hover Effect */
+.btn:hover {
+    background: linear-gradient(135deg, #ff6b6b, #FFD700);
+    box-shadow: 0px 0px 12px rgba(255, 215, 0, 0.8);
+    transform: scale(1.05);
+}
+
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    #email {
+        padding: 25px;
+    }
+
+    .contact h2 {
+        font-size: 2rem;
+    }
+
+    .contact p {
+        font-size: 1rem;
+    }
+}
+
+
+
+/* General Section Styles */
+section {
+    padding: 50px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Fitness Tips & Workout Plans */
+.tips-container, .plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.tip-box, .plan-box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.tip-box:hover, .plan-box:hover {
+    transform: translateY(-5px);
+}
+
+.tip-box h3, .plan-box h3 {
+    color: #0EA5E9;
+    margin-bottom: 10px;
+}
+
+/* Calorie Tracking */
+.calorie-tracking {
+    background: #f4f4f4;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-input {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.calorie-input input {
+    padding: 10px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.calorie-input button {
+    padding: 10px 20px;
+    border: none;
+    background: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.calorie-input button:hover {
+    background: #218838;
+}
+
+/* Calorie Result */
+#calorie-result {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* 🔹 General Hover Effects for All Sections */
+section {
+    transition: all 0.4s ease-in-out;
+}
+
+/* 🔹 Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+}
+.feature-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 🔹 Feature Hover Effects */
+.feature-box:nth-child(1):hover { transform: translateY(-10px); box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); }
+.feature-box:nth-child(1):hover h3 { animation: bounce 0.6s ease-in-out; color: #ff5722; }
+
+.feature-box:nth-child(2):hover { transform: rotate(3deg) scale(1.05); box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2); }
+.feature-box:nth-child(2):hover h3 { color: #4CAF50; transform: rotate(-3deg); }
+
+.feature-box:nth-child(3):hover { box-shadow: 0px 0px 20px #2196F3; border: 2px solid #2196F3; }
+.feature-box:nth-child(3):hover h3 { color: #2196F3; text-shadow: 0px 0px 5px #2196F3; }
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* 🔹 Fitness Tips Section */
+.fitness-tips {
+    background: #f8f9fa;
+    padding: 50px;
+    text-align: center;
+}
+.tip-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.tip-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.2);
+}
+.tip-box:hover h3 {
+    color: #e74c3c;
+    transition: color 0.3s;
+}
+
+/* 🔹 Workout Plans Section */
+.workout-plans {
+    background: #fff;
+    padding: 50px;
+    text-align: center;
+}
+.plan-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.4s ease-in-out;
+}
+.plan-box:hover {
+    transform: translateY(-8px);
+    border: 2px solid #ff9800;
+}
+.plan-box:hover h3 {
+    color: #ff9800;
+    text-shadow: 0px 0px 5px #ff9800;
+}
+
+/* 🔹 Stats Section
+.stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 50px;
+    background: #0EA5E9;
+    color: white;
+}
+.stat-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    transition: all 0.4s ease-in-out;
+}
+.stat-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+.stat-box:hover h2 {
+    color: #FFD700;
+} */
+
+/* Stats Section Styling */
+/* Stats Section - Animated Background */
+#stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #ff6b6b, #ffcc5c, #1dd1a1);
+    background-size: 300% 300%;
+    animation: bgAnimation 6s infinite alternate;
+    border-radius: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Keyframes for default background animation */
+@keyframes bgAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hover Effect - Change Background Colors */
+#stats:hover {
+    background: linear-gradient(135deg, #1dd1a1, #ffcc5c, #ff6b6b);
+    background-size: 400% 400%;
+    animation: hoverBgAnimation 4s infinite alternate;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* Keyframes for hover effect */
+@keyframes hoverBgAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Stat Box Styling */
+.stat-box {
+    width: 200px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.9); /* Soft glass effect */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Soft Gradient Border Effect */
+.stat-box::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ff9a9e, #fad0c4, #ffdde1, #ff6b6b);
+    background-size: 400% 400%;
+    z-index: -1;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: 15px;
+}
+
+/* On Hover, Show Glow */
+.stat-box:hover::before {
+    opacity: 1;
+    animation: boxGlowAnimation 3s infinite alternate;
+}
+
+/* Keyframes for box glow */
+@keyframes boxGlowAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hover Effect - Slight Scale & Shadow */
+.stat-box:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.stat-img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/* Number Styling */
+.stat-box h2 {
+    font-size: 2rem;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #ff6b6b;
+}
+
+/* Text Styling */
+.stat-box p {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+
+/* 🌟 Testimonials Section */
+.testimonials {
+    background: linear-gradient(135deg, #f4f4f4, #eaeaea);
+    padding: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Section Title */
+.testimonials h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 700;
+}
+
+/* Testimonial Container */
+.testimonial-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Individual Testimonial Box */
+.testimonial {
+    width: 280px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Glowing Gradient Border on Hover */
+.testimonial::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #8E44AD, #6C5CE7, #FFD700);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    border-radius: inherit;
+}
+
+/* Testimonial Box Hover Effect */
+.testimonial:hover {
+    transform: scale(1.08);
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.15);
+}
+.testimonial:hover::before {
+    opacity: 1;
+}
+
+/* User Image */
+.testimonial img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    border: 3px solid #6C5CE7;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Image Glow Effect on Hover */
+.testimonial:hover img {
+    border-color: #FFD700;
+}
+
+/* Testimonial Text */
+.testimonial p {
+    font-size: 1rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+/* User Name */
+.testimonial h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #333;
+}
+
