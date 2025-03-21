@@ -31,3 +31,4 @@ build/
 # Coverage and test output
 coverage/
 .nyc_output/
+node_modules/
